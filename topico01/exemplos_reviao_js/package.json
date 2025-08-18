@@ -1,0 +1,13 @@
+{
+  "name": "exemplos_reviao_js",
+  "type":"module",
+  "version": "1.0.0",
+  "description": "Exemplos aula 01 DFE2",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
