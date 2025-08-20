@@ -1,6 +1,6 @@
 
 
-# Repositório de Referência da Disciplina de Desenvolvimento Front-End 2 do CSTSI-IFUL
+# Repositório de Referência da Disciplina de Desenvolvimento Front-End 2 do CSTSI-IFSUL
 
 Este repositório contém uma coleção de links úteis e tutoriais para a disciplina, cobrindo tópicos como ferramentas, versionamento de código e configurações de ambiente, além de exemplos da própria disciplina.
 
