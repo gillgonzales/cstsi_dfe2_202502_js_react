@@ -1,6 +1,7 @@
 
 
-# 📚 Repositório de Referência da Disciplina de Desenvolvimento Front-End 2 do CSTSI-IFSUL
+# 📚 Desenvolvimento Front-End 2 - Javascript - ReactJS
+## IFSUL - Curso Superior de Tecnologia em Sistemas para Internet - 2025.02
 
 Este repositório contém uma coleção de links úteis e tutoriais para a disciplina, cobrindo tópicos como ferramentas, versionamento de código e configurações de ambiente, além de exemplos da própria disciplina.
 
