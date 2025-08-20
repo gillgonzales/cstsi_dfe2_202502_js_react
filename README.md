@@ -51,6 +51,11 @@ Pode trocar o ***npm*** pelo ***yarn***, ou outro gerenciador de pacotes compat�
 ### NodeJS
 
   * **Instalação do NodeJS**: [Link](https://nodejs.org/en/download)
+  * **NVM (Node Version Manager)**: [Link](https://github.com/nvm-sh/nvm)
+  * **FNM (Fast Node Manager)**: [Link](https://github.com/Schniz/fnm)
+  * **Chocolatey e NodeJS via NVM para Windows**: [Link](https://blog.logrocket.com/install-node-windows-chocolatey/)
+
+### Vite
   * **Documentação do Vite**: [Link](https://vite.dev/guide/)
 
 -----
