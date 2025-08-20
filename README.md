@@ -1,12 +1,12 @@
 
 
-# Repositório de Referência da Disciplina de Desenvolvimento Front-End 2 do CSTSI-IFSUL
+# 📚 Repositório de Referência da Disciplina de Desenvolvimento Front-End 2 do CSTSI-IFSUL
 
 Este repositório contém uma coleção de links úteis e tutoriais para a disciplina, cobrindo tópicos como ferramentas, versionamento de código e configurações de ambiente, além de exemplos da própria disciplina.
 
 -----
 
-## Como executar os exemplos?
+## ▶️ Como executar os exemplos?
 
 Os exemplos deste repositório estão organizados por tópicos, acompanhando os conteúdos abordados na disciplina. Cada exemplo corresponde a um projeto Node.js, criado utilizando o comando `npm init` ou por meio do Vite. Para executar qualquer exemplo, acesse a pasta correspondente ao projeto desejado e utilize os comandos de instalação e execução de dependências (npm ou yarn) dentro dessa pasta. Dessa forma, cada exemplo pode ser testado de forma independente, facilitando o aprendizado e a prática dos conceitos apresentados.
 
@@ -78,7 +78,7 @@ Pode trocar o ***npm*** pelo ***yarn***, ou outro gerenciador de pacotes compat�
 
 -----
 
-## 📚 Versionamento de Código
+## 🤖 Versionamento de Código
 
 ### Git
 
