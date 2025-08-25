@@ -95,6 +95,8 @@ Pode trocar o ***npm*** pelo ***yarn***, ou outro gerenciador de pacotes compat�
 
 #### Configurando a chave SSH para o repositório
 
+* **Uso de chaves SSH para acesso ao GitHub**:[Link](https://docs.github.com/pt/enterprise-cloud@latest/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
 Para garantir que o Git use a chave SSH correta para o seu repositório, você pode usar o seguinte comando. Isso é especialmente útil se você tiver várias chaves SSH no seu sistema.
 
 ```bash
