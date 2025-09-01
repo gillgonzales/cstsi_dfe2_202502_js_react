@@ -1,9 +1,15 @@
-const content = mockedProducts.reverse().map(product=>card(product))
-console.log(content);
 
+const content = fetchProducts();
 
-const container = document.querySelector(".products_grid_container");
+const main = ()=>{
+  const container = document.querySelector(".products_grid_container");
 
-setTimeout(()=>
-  container.innerHTML = content.join('')
-,1000);
+  setTimeout(() => {
+    console.log({ "arrayToString": content.join('') });
+    container.innerHTML = content.join('')
+  }, 1000);
+}
+
+window.addEventListener('load',main)
+// window.onload = ()=>main();
+// document.addEventListener('DOMContentLoaded',main)
