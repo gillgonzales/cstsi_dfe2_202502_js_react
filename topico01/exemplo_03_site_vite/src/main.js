@@ -1,10 +1,10 @@
-import { card } from "./components/card";
 import { mockedProducts } from "./mocks/mockedProducts";
+// import { card } from "./components/card";
+import { fetchProducts } from "./utils/importProducts";
 
-const content = mockedProducts.reverse().map(product=>card(product))
-console.log(content);
+// import "./style.css"
 
-
+const content = fetchProducts(mockedProducts)
 const container = document.querySelector(".products_grid_container");
 
 setTimeout(()=>
