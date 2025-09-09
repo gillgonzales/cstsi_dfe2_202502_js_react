@@ -1,12 +1,13 @@
 import "./navbar.css"
-// import appLogoSVG from "../../assets/appLogo.svg"
+import appLogoSVG from "../../assets/appLogo.svg"
 
 const NavBar = () => {
     return <>
         <nav className="nav_container">
             <div className="nav_logo">
                 <a href="#">
-                    <img src="/src/assets/appLogo.svg" className="nav_logo_img"/>
+                    {/* <img src="/src/assets/appLogo.svg" className="nav_logo_img"/> */}
+                    <img src={appLogoSVG} className="nav_logo_img"/>
                 </a>
             </div>
             <div className="nav_links">
