@@ -28,7 +28,7 @@ Comandos equivalentes usando yarn:
 
 Instalação de dependências:
 ```shell
-yarn i
+yarn 
 ```
 Execução:
 ```shell
