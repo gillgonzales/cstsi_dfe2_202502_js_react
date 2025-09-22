@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       {show && <AdaClass />}
-      {/* {show && <Ada />} */}
+      {show && <Ada />}
       <a href="#" onClick={() => setShow(!show)}>
         {show ? 'Remover' : 'Mostrar'}
       </a>
