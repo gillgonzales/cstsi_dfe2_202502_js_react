@@ -10,24 +10,24 @@ const FilterBar = ({filterFunction, disabled}) => {
 const [searchInputState, setSearchInputState] = useState('')
 
 //useRef
-//  const searchInputRef = useRef(null)
+ const searchInputRef = useRef(null)
 
  useEffect(() => {
     !disabled && filterFunction('')
  } , [disabled])
 
 //useState
- useEffect(() => { 
-    filterFunction(searchInputState)
- }, [searchInputState])
+//  useEffect(() => { 
+//     filterFunction(searchInputState)
+//  }, [searchInputState])
 
  console.log('renderiza FilterBar')
 
  //useState
- console.log(searchInputState)
+//  console.log(searchInputState)
 
  //useRef
-//  console.log(searchInputRef.current?.value)
+ console.log(searchInputRef.current?.value)
 
   return (
     <div className="search_bar">
@@ -37,7 +37,8 @@ const [searchInputState, setSearchInputState] = useState('')
             disabled={disabled}
             
             //useRef
-            // ref={searchInputRef}
+            ref={searchInputRef}
+            onBlur={()=>{filterFunction(searchInputRef.current.value)}}
             // onChange={()=>{
             //      console.log(searchInputRef.current.value)
             //     // Descomentando essa linha forçaremos o re-render mesmo com useRef,
@@ -47,16 +48,16 @@ const [searchInputState, setSearchInputState] = useState('')
             // }}
             
             //useState
-            value={searchInputState}
-            onChange={(e)=>setSearchInputState(e.target.value)}
+            // value={searchInputState}
+            // onChange={(e)=>setSearchInputState(e.target.value)}
             />
         <button
             onClick={() => {
                 //useRef
-                // filterFunction(searchInputRef.current.value)
+                filterFunction(searchInputRef.current.value)
 
                 //useState
-                filterFunction(searchInputState)
+                // filterFunction(searchInputState)
 
             }}
         > Filtrar</button>
