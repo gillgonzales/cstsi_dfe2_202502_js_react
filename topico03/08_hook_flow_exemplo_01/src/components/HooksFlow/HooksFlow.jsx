@@ -15,7 +15,9 @@ export default function HooksFlow() {
       pessoa = { peso: 79, altura: 1.7, name: 'Fulano', idade: 35 };
       localStorage.setItem('PESSOA', JSON.stringify(pessoa));
     } else {
+      
       pessoa = JSON.parse(pessoa);
+      console.log(pessoa)
     }
     return pessoa;
   });

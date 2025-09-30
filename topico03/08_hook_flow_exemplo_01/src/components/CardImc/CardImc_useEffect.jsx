@@ -16,7 +16,7 @@ export default function CardImc({ pessoa }) {
       let _peso = peso + 1;
       setPeso(_peso);
       setImc((_peso / alt ** 2).toFixed(2));
-    }, 10000);
+    }, 5000);
     return () => {
       colorTrace('CardImc: Cleanup Effect', 'darkgoldenrod');
     };
