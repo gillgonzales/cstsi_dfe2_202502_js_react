@@ -4,7 +4,7 @@ export const mockedProducts = [
     "fornecedor_id": 1,
     "nome": "Voluptatem in itaque ea eos.",
     "descricao": "Iste vitae sunt eius dolore rerum illo et eos ut minus repudiandae.",
-  "preco": "R$ 3.655,68",
+    "preco": "R$ 3.655,68",
     "qtd_estoque": 283,
     "importado": 0,
     "image": "https://v3ll3s3laravelsdisk.s3.sa-east-1.amazonaws.com/produtos/cards-thumbnail.jpg",
