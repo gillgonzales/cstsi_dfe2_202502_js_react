@@ -5,7 +5,7 @@ import {
   Link,
   Outlet,
   RouterProvider,
-} from 'react-router-dom';
+} from 'react-router';
 import Ola from './components/Ola/Ola.jsx';
 import './index.css';
 
