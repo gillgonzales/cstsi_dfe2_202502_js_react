@@ -7,7 +7,7 @@ export default function Ola() {
     <>
       <div>Ola {name || 'Mundo'} !!!</div>
       <dir>
-        <a href="/">{'< voltar'}</a>
+        <Link to="/">{'< voltar'}</Link>
       </dir>
     </>
   );

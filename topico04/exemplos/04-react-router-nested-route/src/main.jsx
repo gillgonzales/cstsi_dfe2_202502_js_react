@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <a href="/ola">Olá</a>,
+        element: <Link to="/ola">Olá</Link>,
       },
       {
         path: '/ola',
