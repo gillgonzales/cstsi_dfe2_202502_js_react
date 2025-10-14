@@ -7,29 +7,11 @@ import {
   Outlet,
   Route,
   RouterProvider,
-} from 'react-router-dom';
+} from 'react-router';
 import Ola from './components/Ola/Ola.jsx';
 import './index.css';
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route
-      path="/"
-      element={
-        <div>
-          Exemplo de rotas aninhadas!
-          <hr />
-          <Outlet />
-        </div>
-      }
-    >
-      <Route path="/" element={<a href="/ola">Olá</a>} />
-      <Route path="ola" element={<Ola />} />
-      <Route path="ola/:name" element={<Ola />} />
-    </Route>
-  )
-);
-//Configuração Equivalente com objetos
+//Configuração de rotas com objetos
 // const router = createBrowserRouter([
 //   {
 //     path: '/',
@@ -56,6 +38,27 @@ const router = createBrowserRouter(
 //     ],
 //   },
 // ]);
+
+
+//Configuração Equivalente com Função e Componentes
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route
+      path="/"
+      element={
+        <div>
+          Exemplo de rotas aninhadas!
+          <hr />
+          <Outlet />
+        </div>
+      }
+    >
+      <Route path="/" element={<Link to="/ola">Olá</Link>} />
+      <Route path="ola" element={<Ola />} />
+      <Route path="ola/:name" element={<Ola />} />
+    </Route>
+  )
+);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
