@@ -1,0 +1,103 @@
+
+  #root {
+    /* max-width: 100vh; */
+    width: 100%;
+    /* border: solid 2px red; */
+  }
+
+  h4,p{
+    margin: 0;
+  }
+ 
+  
+  h2 {
+    color: var(--secondary-color);
+  }
+
+  input {
+    outline: 0;
+    background: var(--main-bg-color);
+    width: 100%;
+    border: 2px solid var(--ligth-gray-100);
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: all 0.3s;
+    color: var(--second-color)
+}
+
+input:focus {
+    border-color: var(--second-color);
+}
+
+input::placeholder{
+    color:var(--ligth-blue)
+}
+
+input:hover{
+    border-color: var(--second-color);
+}
+
+
+
+.btn,
+.btn-add,
+.btn-edit,
+.btn-delete
+ {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: var(--primary-color);
+    border: 0;
+    text-decoration: none;
+    padding: 15px;
+    color:var(--second-color);
+    font-size: 16px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+.btn-disabled{
+    border: 0;
+    text-decoration: none;
+    padding: 15px;
+    /* background: var(--default-grey-color); */
+    background: var(--dark-grey);
+    color: var(--ligth-gray);
+    display: block;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-add,
+.btn-edit,
+.btn-delete, .btn-cancel{
+    padding: 0.5rem 0.75rem;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.btn-add {
+    background-color: var(--add-confirm-color);
+}
+.btn-delete {
+    background-color: var(--remove-cancel-color);
+    color:white;
+}
+
+.btn-disabled{
+  border: 0;
+  text-decoration: none;
+  padding: 15px;
+  /* background: var(--default-grey-color); */
+  background: var(--dark-grey);
+  color: var(--ligth-gray);
+  display: block;
+}
+
+.btn-block {
+  width: 100%;
+}
