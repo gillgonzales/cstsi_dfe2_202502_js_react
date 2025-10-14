@@ -26,7 +26,7 @@ const Show = () => {
     return (
         <div className='show__main_content'>
             <div className="show__container">
-                {data?.nome
+                {data.nome
                     ? (<>
                         <h1>{data.nome}</h1>
                         <Cards key={`card${id}`} item={data} />

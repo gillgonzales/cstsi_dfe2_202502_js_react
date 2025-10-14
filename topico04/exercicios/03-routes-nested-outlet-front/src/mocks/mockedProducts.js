@@ -645,6 +645,7 @@ export const mockedProducts = [
     "importado": 1,
     "image": "uhh0JneGnGNAFrVJyvAw5q4iQHdCZax4Y2uGnQcN.png",
     "created_at": "2024-08-27T18:47:00.000000Z",
-    "updated_at": "2024-08-27T18:47:00.000000Z"
+    "updated_at": "2024-08-27T18:47:00.000000Z",
+    "fornecedor": {"nome":"Fulano"},
   }
 ];

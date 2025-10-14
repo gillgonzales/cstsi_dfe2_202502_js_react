@@ -2,8 +2,9 @@
 import { Link } from "react-router";
 import "./cards.css"
 export const Cards = ({ item }) => {
+  console.log(item)
   const awsBucket = "https://v3ll3s3laravelsdisk.s3.sa-east-1.amazonaws.com";
-    
+
   return (
     <div className="card_container">
       <Link to={`/produto/${item.id}`}>
@@ -18,6 +19,12 @@ export const Cards = ({ item }) => {
           <p className="card_text">
             {item.descricao}
           </p>
+          {item.fornecedor?.nome ?
+            <p >
+              {item.fornecedor.nome}
+            </p>
+            : <p>Sem Fornecedor</p>
+          }
         </div>
       </Link>
     </div>
