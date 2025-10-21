@@ -18,12 +18,6 @@ function App() {
     inputTextRef.current?.value,
   ]);
 
-  const editTodo = (todo) => {
-    setEditedTodo(todo);
-    inputTitleRef.current.value = todo.title;
-    inputTextRef.current.value = todo.text;
-  };
-
   useEffect(() => {
     console.table(listTodos);
   }, [listTodos]);
@@ -37,7 +31,7 @@ function App() {
       />
       <div className="card">
         {listTodos.length > 0 ? (
-          <ListTodo editTodo={editTodo} />
+          <ListTodo/>
         ) : (
           <p>Crie e organize suas tarefas!!!</p>
         )}

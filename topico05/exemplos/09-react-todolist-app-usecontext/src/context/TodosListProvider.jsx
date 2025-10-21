@@ -1,39 +1,38 @@
 import { useState, createContext, useRef } from 'react';
 
 export const StateTodosList = createContext({
-  inputTitleRef:{},
-  inputTextRef:{},
+  inputTitleRef: {},
+  inputTextRef: {},
   listTodos: [],
   editedTodo: {},
-  createTodo: ()=>{},
-  newTodo: () => {},
-  deleteTodo: () => {},
-  setEditedTodo: () => {},
+  createTodo: () => { },
+  newTodo: () => { },
+  deleteTodo: () => { },
+  setEditedTodo: () => { },
+  editTodo: () => { }
 });
 
 export const TodosListProvider = ({ children }) => {
- 
+
   const [listTodos, setListTodos] = useState([]);
   const [editedTodo, setEditedTodo] = useState({});
   const inputTitle = useRef();
   const inputText = useRef();
-  
+
   const createTodo = () => {
     console.log('createTodo do TodosListProvider')
-      let title = inputTitle?.current?.value;
-      let text = inputText?.current?.value;
+    let title = inputTitle?.current?.value;
+    let text = inputText?.current?.value;
 
-      console.log({title,text})
-  
-      if (!title || !text) return;
-  
-      newTodo({ title, text });
-      inputTitle.current.value = '';
-      inputText.current.value = '';
-    };
+    console.log({ title, text })
 
-  
-  
+    if (!title || !text) return;
+
+    newTodo({ title, text });
+    inputTitle.current.value = '';
+    inputText.current.value = '';
+  };
+
   const newTodo = ({ title, text }) => {
     //createEditTodo
     setListTodos((_listTodos) => {
@@ -56,6 +55,11 @@ export const TodosListProvider = ({ children }) => {
     });
   };
 
+  const editTodo = (todo) => {
+    setEditedTodo(todo);
+    inputTitle.current.value = todo?.title;
+    inputText.current.value = todo?.text;
+  };
 
   return (
     <StateTodosList.Provider
@@ -68,6 +72,7 @@ export const TodosListProvider = ({ children }) => {
         newTodo,
         deleteTodo,
         setEditedTodo,
+        editTodo,
       }}
     >
       {children}

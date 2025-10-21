@@ -2,8 +2,8 @@
 import { useContext } from 'react';
 import { StateTodosList } from '../../context/TodosListProvider';
 
-export default function Todo({ todo, editTodo }) {
-  const { deleteTodo } = useContext(StateTodosList);
+export default function Todo({ todo }) {
+  const { editTodo, deleteTodo } = useContext(StateTodosList);
   return (
     <li>
       <h2>{todo.title}</h2>
