@@ -1,0 +1,14 @@
+
+.btn-theme{
+    /* position: absolute;
+    top:0;
+    left: 90%; */
+    border:0px;
+    background-color: transparent;
+  
+    &.dark{
+       background-color: transparent;
+    }
+  }
+
+
