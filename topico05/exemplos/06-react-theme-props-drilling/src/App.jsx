@@ -8,7 +8,10 @@ function App() {
 
   return (
     <>
-        <Home setCount={setCount} count={count} theme={theme}/>
+        <Home 
+          setCount={setCount} 
+          count={count} 
+          theme={theme}/>
     </>
   );
 }

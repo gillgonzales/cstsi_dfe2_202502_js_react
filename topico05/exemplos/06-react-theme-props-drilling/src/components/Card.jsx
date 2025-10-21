@@ -1,5 +1,10 @@
+/* eslint-disable react/prop-types */
 
-export function Card({ count, setCount, theme }) {
+export function Card({ 
+  count,
+  setCount,
+  theme 
+}) {
   return (
     <div className={`card ${theme}`}>
       <button onClick={() => setCount((count) => count + 1)}>

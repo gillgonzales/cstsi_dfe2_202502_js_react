@@ -1,7 +1,12 @@
+/* eslint-disable react/prop-types */
 
 import { Card } from './Card';
 
-const ContainerMain = ({count,setCount, theme}) => {
+const ContainerMain = ({
+  count,
+  setCount, 
+  theme
+}) => {
   return (
     <div className='container__main'>
         <h1>Exemplo da API de Contexto</h1>

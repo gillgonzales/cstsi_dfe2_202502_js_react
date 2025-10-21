@@ -1,8 +1,13 @@
+/* eslint-disable react/prop-types */
 import reactLogo from '../../assets/react.svg';
 import viteLogo from '/vite.svg';
 import ContainerMain from '../../components/ContainerMain';
 
-export function Home({ count, setCount,theme }) {
+export function Home({ 
+  count,
+  setCount,
+  theme 
+}){
   console.log(theme);
 
   return (
@@ -17,7 +22,11 @@ export function Home({ count, setCount,theme }) {
               <img src={reactLogo} className="logo react" alt="React logo" />
             </a>
           </div>
-          <ContainerMain count={count} setCount={setCount} theme={theme}/>
+          <ContainerMain 
+            count={count} 
+            setCount={setCount} 
+            theme={theme}
+          />
         </section>
       </main>
     </>
