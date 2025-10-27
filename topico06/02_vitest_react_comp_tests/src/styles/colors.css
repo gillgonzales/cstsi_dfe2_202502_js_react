@@ -1,0 +1,30 @@
+@tailwind theme;
+
+@theme {
+  --breakpoint-3xl: '1960px';
+  --breakpoint-4xl: '2200px';
+
+  /*https://www.tailwindshades.com/#color=114.0983606557377%2C82.06278026905827%2C56.27450980392157&step-up=8&step-down=11&hue-shift=0&name=green&base-stop=5&v=1&overrides=e30%3D*/
+  --color-green: oklch(82.399% 0.25357 141.76);
+  --color-green-50: oklch(95.866% 0.05206 142.58);
+  --color-green-100: oklch(94.096% 0.08 142.78);
+  --color-green-200: oklch(90.442% 0.13295 141.82);
+  --color-green-300: oklch(87.178% 0.18164 141.73);
+  --color-green-400: oklch(84.649% 0.22409 141.68);
+  --color-green-500: oklch(82.399% 0.25357 141.76);
+  --color-green-600: oklch(75.195% 0.24692 141.98);
+  --color-green-700: oklch(61.213% 0.19939 141.92);
+  --color-green-800: oklch(46.365% 0.14874 141.91);
+  --color-green-900: oklch(30.239% 0.09219 141.63);
+  --color-green-950: oklch(21.156% 0.06065 140.79);
+
+
+  /*https://oklch.com/#0.8003,0.1821,151.71,100*/
+  --color-primary: oklch(0.8003 0.1821 151.71);
+  --color-secondary: oklch(0.4244 0.1809 265.64);
+  --color-secondary-highlight: oklch(0.7137 0.1434 254.62);
+  --color-dark-secondary: oklch(0.2055 0.08 264.56); /* https://oklch.com/#0.2055,0.08,264.56,100 */
+  --color-dark-primary: oklch(0.6318 0.1542 151.37);
+  --color-dark-highlight: oklch(0.5409 0.1982 266.85);
+  --color-dark-background: oklch(0.3569 0.0407 265.47);
+}

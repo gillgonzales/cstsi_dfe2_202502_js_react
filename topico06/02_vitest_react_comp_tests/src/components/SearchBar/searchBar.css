@@ -1,0 +1,9 @@
+@import "../../styles/main.css";
+@tailwind utility;
+
+
+@utility search-bar {
+    &:has(input:disabled) button {
+        background-color: gray;
+    }
+}
