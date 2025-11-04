@@ -10,14 +10,22 @@ let regexBusca = /test/i
 context('Actions', () => {
   // it("Aguarda 2s para iniciar os testes: ", ()=> cy.wait(2000)); 
   beforeEach(() => {
-    cy.wait(DELAY)
+    // cy.wait(DELAY)
     cy.visit(URL)
   })
 
-  afterEach(() => {
-    cy.wait(DELAY); // waits 2 seconds after each test
-  });
+  // afterEach(() => {
+  //   cy.wait(DELAY); // waits 2 seconds after each test
+  // });
 
+  it('Acessar o primeiro card de resultados', () => {
+    // https://on.cypress.io/type
+    cy.wait(1000);
+    cy.get('main>div>div>div>div')
+     .find('a')
+     .first().click()
+   
+  });
 
   it('Digitando no campo de busca "Test" e verificando o resultado', () => {
     // https://on.cypress.io/type
@@ -26,7 +34,7 @@ context('Actions', () => {
 
     cy.get('input[type=search]').type(busca)
     cy.get('input[type=search]').should('have.value', busca)
-    cy.wait(1000)
+    // cy.wait(1000)
     cy.get('form button').click()
     cy.get('main>div>div>div>div>a')
       .find('div>h3')
@@ -59,7 +67,7 @@ context('Actions', () => {
         expect(include).to.be.true
       })
 
-    cy.wait(2000);
+    // cy.wait(2000);
     cy.get('input[type=search]').clear()
     cy.get('input[type=search]').should('have.value', '')
     cy.get('input[type=search]').blur()
@@ -83,21 +91,21 @@ context('Actions', () => {
       regexBusca = /alias/i
       cy.get('input[type=search]').type(busca)
       cy.get('input[type=search]').should('have.value', busca)
-      cy.wait(1000);
+      // cy.wait(1000);
       cy.get('form button').click()
       cy.get('main>div>div>div>div>a')
         .find('div>h3')
         .invoke('text')
         .should('match', regexBusca)
-      cy.wait(2000);
+      // cy.wait(2000);
       cy.get('main>div>div>div>div>a')
         .first().click()
-      cy.wait(2000);
+      // cy.wait(2000);
       cy.get('main>div>div>div>a')
         .find('div>h3')
         .invoke('text')
         .should('match', regexBusca)
-      cy.wait(1000);
+      // cy.wait(1000);
       cy.get('main>div>a')
         .should('have.text', 'Voltar')
         .click()

@@ -8,11 +8,9 @@ import ProdutosProvider, { ProdutosContext } from "../../src/context/ProdutosPro
 
 describe("SearchBar Testes", () => {
     test("Teste simples de renderização!", async () => {
-
         const { getByText } = render(
             <SearchBar filterFunction={() => { }} />
         )
-
         await expect.element(getByText('Pesquisar')).toBeInTheDocument()
 
     });
@@ -25,7 +23,7 @@ describe("SearchBar Testes", () => {
 
     test("Teste com Provider de Produtos!", async () => {
 
-        const { getByText, getByPlaceholder } = render(
+        const { getByText, getByPlaceholder} = render(
             <ProdutosProvider>
                 <WrappedSearchBar />
             </ProdutosProvider>

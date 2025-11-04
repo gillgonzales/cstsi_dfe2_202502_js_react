@@ -6,5 +6,6 @@ describe('<SearchBar />', () => {
   it('renders', () => {
     // see: https://on.cypress.io/mounting-react
     cy.mount(<SearchBar filterFunction={()=>{}}/>)
+    cy.get('button').contains('Pesquisar')
   })
 })

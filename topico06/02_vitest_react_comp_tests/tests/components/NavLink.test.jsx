@@ -10,7 +10,6 @@ describe("NavLink Teste", () => {
     test("Teste dos links da barra superior de navegação!", async () => {
         const { getByText } = render(<RouterStub component={<NavLinks />} />)
         await expect.element(getByText('Log in')).toBeInTheDocument()
-
     });
 
     test("Teste com usuário!", async () => {
