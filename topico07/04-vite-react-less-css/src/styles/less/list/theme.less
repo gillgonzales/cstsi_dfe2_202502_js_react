@@ -1,0 +1,48 @@
+ @import '../colors.less';
+
+
+ @listProperties: 'border';
+ @theme-rules: {};
+
+
+ .makeMediaTheme(@rules) {
+   @media (prefers-color-scheme: light) {
+     @rules();
+   }
+ }
+
+ .makeMediaTheme() {
+    @media (prefers-color-scheme: light) {
+      @theme-rules();
+   }
+ }
+
+ .appendProperties(@property, @value) {
+    @listProperties: "@{value} " + @listProperties; 
+    @result: @listProperties;
+ }
+
+ .themeDefine(@property, @value) {
+   @{property}: @value;
+ }
+
+ .setTheme(@property, @color) {
+
+   @light-color: @themes[@light-theme][@@color];
+   @dark-color: @themes[@dark-theme][@@color];
+
+   .themeDefine(@property, @dark-color);
+
+  //  @theme-rules: {
+  //   .appendProperties(@property, @light-color);
+  //  }
+
+  //  .makeMediaTheme(@theme-rules);
+
+
+    @rules: {
+      .themeDefine(@property, @light-color);
+    }
+
+    .makeMediaTheme(@rules);
+ }
