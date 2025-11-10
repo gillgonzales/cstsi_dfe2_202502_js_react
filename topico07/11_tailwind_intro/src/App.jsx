@@ -17,8 +17,15 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      {/* <div className="bg-[blue] rounded-full w-[60px] h-[60px] text-white py-5 text-center text-sm mx-auto font-bold"> */}
+      <div className="circle">
+        css
+      </div>     
+      <div class='bg-blue-500 rounded-full w-[60px] h-[60px] text-white py-5 text-center text-sm mx-auto font-bold' >
+        tailwind
+      </div>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button className="bg-red-500!" onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
         <p className="bg-blue-600 rounded-full p-4 mt-2">
