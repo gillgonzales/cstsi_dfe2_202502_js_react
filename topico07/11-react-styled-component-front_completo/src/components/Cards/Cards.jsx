@@ -10,7 +10,10 @@ export const Cards = ({ item }) => {
         <CardMain>
           <h3>{item.nome}</h3>
           <CardImage>
-            {item?.image && <img src={`/produtos/${item.image}`} />}
+            {item?.image
+                ? <img src={`/img/${item.image}`} />
+                : <img src={`/img/cards-thumbnail.jpg`} />
+              }
           </CardImage>
           <h4>
             R$ {item.preco}

@@ -1,56 +1,50 @@
-/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import { createContext, useState } from "react";
-import axiosClient from "../utils/axios-client";
+import { mockedProducts } from "../mocks/mockData";
 
+const MAX_TIMEOUT = 500;
+const MOCKED_PRODUCTS = mockedProducts.reverse();
 
 export const ProdutosContext = createContext({
-  data: null,
-  loadProdutos: () => {},
-  setData: () => {},
-  editProduto: () => {},
-  deleteProduto: () => {},
+  produto: {},
+  listProdutos: [],
+  setProduto: () => { },
+  loadProdutos: () => { },
+  filterProdutos: () => { },
+  findProdutoById: () => { },
 });
 
 const ProdutosProvider = ({ children }) => {
-  const [data, setData] = useState(null);
+  const [produto, setProduto] = useState({});
+  const [listProdutos,setListProdutos] = useState([])
 
-  const loadProdutos = async (id = null) => {
-    const url = id ? `/produtos/${id}` : `/produtos`;
-    try {
-      const response = await axiosClient.get(url);
-      console.log({response})
-      const {data} = response;
-      const _data = data?.data;
-      console.log(_data);
-      if (!_data)
-        throw new Error("Erro ao carregar produtos");
+  const loadProdutos = () => {
+    console.log("Provider")
+    setTimeout(() =>setListProdutos(MOCKED_PRODUCTS), MAX_TIMEOUT);
+  }
 
-      // Array.isArray(_data) && _data.reverse();
-      setData(_data);
-    } catch (error) {
-      if(error.status === 500)
-          console.error("Erro ao comunicar com a API!!!")
-      console.log(error);
-    }
-  };
+  const findById = (id) => {
+    let produto = MOCKED_PRODUCTS.find(produto => produto.id === +id)
+    setProduto(produto)
+    return produto;
+  }  
 
-  const editProduto = (id, data) => {
-    return true; //TODO
-  };
-
-  const deleteProduto = (id) => {
-    return true; //TODO
-  };
+  const filterProdutos = (searchTerm) => {
+    const filteredProducts = MOCKED_PRODUCTS.filter((product) => {
+      return product.nome.toLowerCase().includes(searchTerm.toLowerCase())
+    })
+    setListProdutos(filteredProducts)
+  }
 
   return (
     <ProdutosContext.Provider
       value={{
-        data,
+        produto,
+        listProdutos,
+        setProduto,
         loadProdutos,
-        setData,
-        editProduto,
-        deleteProduto,
+        filterProdutos,
+        findProdutoById: findById,
       }}
     >
       {children}

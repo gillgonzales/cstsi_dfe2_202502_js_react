@@ -4,9 +4,10 @@ import { Cards } from "../../components/Cards/Cards";
 import { ProdutosContext } from "../../contexts/ProdutosProvider";
 
 const Home = () => {
-  const { data, loadProdutos } = useContext(ProdutosContext)
+  const { listProdutos, loadProdutos } = useContext(ProdutosContext)
 
   useEffect(() => {
+    console.log("Olá!!!");
     loadProdutos()
   }, [])
 
@@ -14,9 +15,9 @@ const Home = () => {
     <div>
       <div className="home">
         <div className="products_grid_container">
-          {!data?.length
+          {!listProdutos?.length
             ? <p>Carregando...</p>
-            : data.map((product, key) => (
+            : listProdutos.map((product, key) => (
               <Cards key={`card${key}`} item={product} />
             ))
           }
