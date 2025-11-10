@@ -1,20 +1,35 @@
 @import "tailwindcss";
 
 @theme {
-  
+
   /*https://www.tailwindshades.com/#color=0%2C0%2C14.117647058823529&step-up=8&step-down=11&hue-shift=0&name=dark&base-stop=5&v=1&overrides=e30%3D*/
-  --color-dark: oklch(26.032% 0 none);
-  --color-dark-50: oklch(59.987% 0 none);
-  --color-dark-100: oklch(56.584% 0 none);
-  --color-dark-200: oklch(49.261% 0 none);
-  --color-dark-300: oklch(42.024% 0 none);
-  --color-dark-400: oklch(34.07% 0 none);
-  --color-dark-500: oklch(26.032% 0 none);
-  --color-dark-600: oklch(13.441% 0 none);
-  --color-dark-700: oklch(0% 0 none);
-  --color-dark-800: oklch(0% 0 none);
-  --color-dark-900: oklch(0% 0 none);
-  --color-dark-950: oklch(0% 0 none);
+  --color-mydark: oklch(26.032% 0 none);
+  /*#242424*/
+  --color-mydark-50: oklch(59.987% 0 none);
+  --color-mydark-100: oklch(56.584% 0 none);
+  --color-mydark-200: oklch(49.261% 0 none);
+  --color-mydark-300: oklch(42.024% 0 none);
+  --color-mydark-400: oklch(34.07% 0 none);
+  --color-mydark-500: oklch(26.032% 0 none);
+  --color-mydark-600: oklch(13.441% 0 none);
+  --color-mydark-700: oklch(0% 0 none);
+  --color-mydark-800: oklch(0% 0 none);
+  --color-mydark-900: oklch(0% 0 none);
+  --color-mydark-950: oklch(0% 0 none);
+
+  --color-pastel-green: oklch(82.065% 0.21122 144.39);
+  --color-pastel-green-50: oklch(99.216% 0.00742 151.89);
+  --color-pastel-green-100: oklch(96.923% 0.03101 146.81);
+  --color-pastel-green-200: oklch(92.621% 0.08131 146.45);
+  --color-pastel-green-300: oklch(88.766% 0.12876 145.87);
+  --color-pastel-green-400: oklch(85.028% 0.17308 145.16);
+  --color-pastel-green-500: oklch(82.065% 0.21122 144.39);
+  --color-pastel-green-600: oklch(78.783% 0.24779 143.37);
+  --color-pastel-green-700: oklch(67.048% 0.21372 143.27);
+  --color-pastel-green-800: oklch(53.474% 0.1683 143.34);
+  --color-pastel-green-900: oklch(38.669% 0.11788 143.48);
+  --color-pastel-green-950: oklch(30.897% 0.09103 143.71);
+  
 }
 
 
@@ -24,7 +39,8 @@
   font-weight: 400;
 
   /*https://openreplay.com/tools/hex-to-oklch/*/
-  --bg-color-dark: #242424; /*oklch(26.03% 0.000 0)*/
+  --bg-color-dark: #242424;
+  /*oklch(26.03% 0.000 0)*/
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -57,7 +73,8 @@ body {
   background-image: url('../assets/imgs/front-end-wallpapers.jpg');
   background-repeat: no-repeat;
   background-size: contain;
-  background-color: var(--bg-color-dark);
+  /* background-color: var(--bg-color-dark); */
+  @apply bg-mydark-300;
 
 }
 

@@ -39,14 +39,14 @@ function App() {
       </p>
       <div className="
         aspect-1/1 
-        w-[50vw] 
+        w-[50vw]
         rounded-full
         bg-[url(/img/frontdev.png)]
         bg-cover
-         bg-blue-200
-        dark:bg-gray-300
+         bg-pastel-green-200
+        dark:bg-mydark-50
         hover:bg-blue-300
-        dark:hover:bg-dark-900"
+        dark:hover:bg-mydark-900"
         ></div>
     </>
   );
