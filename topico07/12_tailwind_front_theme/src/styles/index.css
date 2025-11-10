@@ -1,10 +1,30 @@
 @import "tailwindcss";
 
+@theme {
+  
+  /*https://www.tailwindshades.com/#color=0%2C0%2C14.117647058823529&step-up=8&step-down=11&hue-shift=0&name=dark&base-stop=5&v=1&overrides=e30%3D*/
+  --color-dark: oklch(26.032% 0 none);
+  --color-dark-50: oklch(59.987% 0 none);
+  --color-dark-100: oklch(56.584% 0 none);
+  --color-dark-200: oklch(49.261% 0 none);
+  --color-dark-300: oklch(42.024% 0 none);
+  --color-dark-400: oklch(34.07% 0 none);
+  --color-dark-500: oklch(26.032% 0 none);
+  --color-dark-600: oklch(13.441% 0 none);
+  --color-dark-700: oklch(0% 0 none);
+  --color-dark-800: oklch(0% 0 none);
+  --color-dark-900: oklch(0% 0 none);
+  --color-dark-950: oklch(0% 0 none);
+}
+
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  --bg-color-dark:#242424;
+
+  /*https://openreplay.com/tools/hex-to-oklch/*/
+  --bg-color-dark: #242424; /*oklch(26.03% 0.000 0)*/
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -21,6 +41,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -56,9 +77,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -69,12 +92,15 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
-  body{
+
+  body {
     background-color: #dceded;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }

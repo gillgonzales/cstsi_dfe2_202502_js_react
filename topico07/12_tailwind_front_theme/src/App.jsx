@@ -38,15 +38,15 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       <div className="
-        bg-blue-200
-        dark:bg-gray-300
         aspect-1/1 
         w-[50vw] 
         rounded-full
         bg-[url(/img/frontdev.png)]
         bg-cover
+         bg-blue-200
+        dark:bg-gray-300
         hover:bg-blue-300
-        dark:hover:bg-gray-400"
+        dark:hover:bg-dark-900"
         ></div>
     </>
   );
