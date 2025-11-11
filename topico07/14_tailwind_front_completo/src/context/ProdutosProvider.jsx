@@ -3,6 +3,8 @@ import { createContext, useState,useEffect } from 'react'
 import { mockDataProducts } from '../mocks/mockData';
 mockDataProducts.reverse()
 
+const API_URL = import.meta.env.VITE_API_BASE_URL;
+
 export const ProdutosContext = createContext(undefined)
 
 const ProdutosProvider = ({ children }) => {
@@ -17,7 +19,7 @@ const ProdutosProvider = ({ children }) => {
     }
 
     const loadProdutos = ()=>{
-        fetch('https://v3ll3-20240803-laravel-60a6191b77b1.herokuapp.com/api/produtos?per_page=1000')
+        fetch(API_URL+'produtos?per_page=1000')
         .then((response)=>{
             if(response.status==200)
                 return response.json().then( (data)=> {
@@ -43,6 +45,7 @@ const ProdutosProvider = ({ children }) => {
     }
     
     useEffect(() => {
+        console.log(API_URL)
         // loadProdutosMock()
         loadProdutos();
       }, []);
