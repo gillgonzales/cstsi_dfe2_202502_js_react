@@ -43,7 +43,8 @@ const ProdutosProvider = ({ children }) => {
     }
     
     useEffect(() => {
-        loadProdutosMock()
+        // loadProdutosMock()
+        loadProdutos();
       }, []);
     
 
