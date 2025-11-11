@@ -14,7 +14,7 @@ const Home = () => {
           {!produtos?.get()
             ? <p>Carregando...</p>  
             :produtos.get().map((product, i) => (
-              <Cards key={product.id*i*Math.ceil(Math.random()*100)} item={product} />
+              <Cards key={`prod_key_${i}`} item={product} />
             ))
           }
         </div>
