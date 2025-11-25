@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+.show__main_content{
+  width: 100%;
+}
+
+@media (min-width: 1536px) {
+  .show__main_content{
+    max-width: 1280px;
+  }
+}
+
+.show__container{
+  /* margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  height: fit-content;
+  min-height: 20rem ;
+  column-gap: 2rem ;
+  row-gap: 1.25rem ;
+  width: 70vw; */
+
+  @apply mx-auto grid min-h-90 gap-x-8 gap-y-5 w-[70vw] mb-10 md:w-90;
+
+}
+
+  /* @media (min-width: 640px) {
+    .show__container{
+      width: 50vw;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  } */
+
+  /* @media (min-width: 768px) {
+    .show__container{ width: 50vw;}
+  } */
+/* 
+  @media (min-width: 1024px) {
+    .show__container{width: 40vw;}
+  } */
+/* 
+  @media (min-width: 1536px) {
+    .show__container{
+      width: 20vw;
+      gap: 2rem ;
+  } */
+/* } */
