@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
+import imgThumb from '/img/cards-thumbnail.jpg?url'
 import "./cards.css"
+
 export const Cards = ({ item }) => {
-  const awsBucket = "https://v3ll3s3laravelsdisk.s3.sa-east-1.amazonaws.com";
   
   return (
     <div className="card_container">
@@ -10,7 +11,7 @@ export const Cards = ({ item }) => {
         <div className="card_main">
           <h3 className="card_name">{item.nome}</h3>
           <div className="card_thumb">
-            {item?.image && <img className="card_thumb_image" src={`${awsBucket}/produtos/${item.image}`} />}
+             <img className="card_thumb_image" src={`${item?.image?item.image:imgThumb}`}  />
           </div>
           <h4 className="card_price">
             R$ {item.preco}

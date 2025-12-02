@@ -1,6 +1,7 @@
-.home{
-    width: 100;
+.show{
+    width: 50%;
 }
+
 
 .products_grid_container{
     margin-left: auto;
@@ -25,7 +26,7 @@
 
 @media (min-width: 640px) {
     .products_grid_container {
-        width: fit-content;
+        width: 100%; /* fit-content*/;
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }

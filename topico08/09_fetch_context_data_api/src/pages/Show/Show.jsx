@@ -14,8 +14,7 @@ const Show = () => {
     }, [])
 
     return (
-        <div>
-            <div className="home">
+            <div className="show">
                 <div className="show_grid_container">
                     {!data?.nome
                         ? <p>Carregando...</p>
@@ -24,7 +23,6 @@ const Show = () => {
                 </div>
                 <Link to="/">Voltar</Link>
             </div>
-        </div>
     );
 };
 

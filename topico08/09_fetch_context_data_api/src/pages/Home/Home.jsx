@@ -11,7 +11,6 @@ const Home = () => {
   }, [])
 
   return (
-    <div>
       <div className="home">
         <div className="products_grid_container">
           {isLoaded && data?.length
@@ -22,7 +21,6 @@ const Home = () => {
             }
         </div>
       </div>
-    </div>
   );
 };
 

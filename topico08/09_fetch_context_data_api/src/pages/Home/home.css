@@ -1,5 +1,5 @@
 .home{
-    width: 100;
+    width: 100%;
 }
 
 .products_grid_container{
@@ -14,7 +14,7 @@
 
 @media (min-width: 640px) {
     .products_grid_container {
-        width: fit-content;
+        width: 100%; /* fit-content*/;
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
