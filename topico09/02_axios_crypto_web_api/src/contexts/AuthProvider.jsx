@@ -4,9 +4,8 @@ import { createContext, useState, useContext, useEffect } from "react"
 import axiosClient from "../utils/axios-client";
 import { arrayBufferToBase64, base64ToArrayBuffer, decryptText, encryptText } from "../utils/web-crypto";
 
-const storageVars = {
-    CURRENT_USER:window.crypto.randomUUID(),
-    ACCESS_TOKEN:window.crypto.randomUUID()
+const storage = {
+    ACCESS_TOKEN: window.crypto.randomUUID()
 }
 
 const verifyUser = async () => {
@@ -24,31 +23,22 @@ const verifyUser = async () => {
 
 const clearAuthStorages = () => {
     console.log('clear')
-    localStorage.removeItem(storageVars.CURRENT_USER);
+    localStorage.removeItem(storage.ACCESS_TOKEN)
 }
 
-function userDataFromLocalStorage(){
-    console.log(localStorage)
-    const allStorage = Object.entries(localStorage);
-    const arrayStorage = allStorage.filter(i=>i[0].match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/));
-    console.log(arrayStorage)
-    if(arrayStorage.length<2) return null
-    const [userLocalStorage] = arrayStorage.sort((a,b)=>b[1].length-a[1].length);
-    const [uuidUserName, userEncryptedData] = userLocalStorage
-    console.log(uuidUserName, userEncryptedData)
-    const encryptedUserBuffer = base64ToArrayBuffer(userEncryptedData)
-    // const userData = decryptText(encryptedUserBuffer).then(
-    //     decryptedUserData=>{
-    //         const decoder = new TextDecoder('utf8', { ignoreBOM: true });
-    //         const decodedDecryptedUserDataa = decoder.decode(decryptedUserData)
-    //         console.log(decodedDecryptedUserDataa)
-    //         debugger;   
-    //     }).catch(errorMessage=>console.error(errorMessage))
-    // console.log(userData)
-    storageVars.CURRENT_USER = uuidUserName;
-   
-    return userEncryptedData;
-}
+  function userTokenFromLocalStorage() {
+        let uuidPattern = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/
+        const arrayStorage = Object.entries(localStorage).filter(i => i[0].match(uuidPattern));
+        console.log('token', arrayStorage)
+        if (arrayStorage.length < 2) return null
+        const [tokenLocalStorage] = arrayStorage.sort((a, b) => a[1].length - b[1].length);
+        const [uuidTokenName, tokenEncryptedData] = tokenLocalStorage
+        console.log(uuidTokenName, tokenEncryptedData)
+        const encryptedtokenBuffer = base64ToArrayBuffer(tokenEncryptedData)
+        console.log(encryptedtokenBuffer)
+        storage.ACCESS_TOKEN = uuidTokenName;
+        return encryptedtokenBuffer;
+    }
 
 const AuthContext = createContext({
     user: {},
@@ -60,22 +50,10 @@ const AuthContext = createContext({
 
 export const AuthProvider = ({ children }) => {
 
-    const [user, _setUser] = useState(userDataFromLocalStorage)
-    const [token, _setToken] = useState(null)
-
-    const setUser = (user) => {
-        // debugger;
-        _setUser(user);
-           user && encryptText(JSON.stringify(user))
-            .then(cryptedUserData =>{
-                console.log({cryptedUserData})
-                localStorage.setItem(storageVars.CURRENT_USER,arrayBufferToBase64(cryptedUserData));
-            });
-        // user && localStorage.setItem(CURRENT_USER, JSON.stringify(user));
-    }
+    const [user, setUser] = useState(null)
+    const [token, _setToken] = useState(userTokenFromLocalStorage)
 
     const setToken = (token) => {
-        // debugger;
         token && encryptText(token)
             .then(cryptedToken => {
                 console.log({ token })
@@ -83,23 +61,27 @@ export const AuthProvider = ({ children }) => {
                 const decoder = new TextDecoder('utf8', { ignoreBOM: true });
                 const decodedCryptedToken = decoder.decode(cryptedToken)
                 console.log(`text:${decodedCryptedToken}`)
-                console.log('base64',arrayBufferToBase64(cryptedToken))
-                localStorage.setItem(storageVars.ACCESS_TOKEN,arrayBufferToBase64(cryptedToken))
+                console.log('base64', arrayBufferToBase64(cryptedToken))
+                localStorage.setItem(storage.ACCESS_TOKEN, arrayBufferToBase64(cryptedToken))
                 _setToken(cryptedToken)
             });
         !token && clearAuthStorages();
     }
 
     const interceptBearerToken = async (config) => {
-        if (token) {
+            try {
+                if (!token)  return config
             //  debugger;
-            const decryptedToken = await decryptText(token);
-            console.log("decrypt:", { decryptedToken })
-            const plainTextToken = new TextDecoder().decode(decryptedToken)
-            console.log('token descriptografado:',plainTextToken)
-            if (plainTextToken) config.headers.Authorization = `Bearer ${plainTextToken}`;
-        }
-        return config;
+                const decryptedToken = await decryptText(token);
+                console.log("decrypt:", { decryptedToken })
+                const plainTextToken = new TextDecoder().decode(decryptedToken)
+                console.log('token descriptografado:', plainTextToken)
+                if (plainTextToken) 
+                    config.headers.Authorization = `Bearer ${plainTextToken}`;
+            } catch (error) {
+                console.error(error)
+            } 
+            return config;
     }
 
     axiosClient.interceptors.request.use(interceptBearerToken);
