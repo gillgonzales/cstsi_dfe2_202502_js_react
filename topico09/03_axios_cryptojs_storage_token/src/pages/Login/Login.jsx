@@ -1,7 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthProvider";
 import { useRef } from "react";
-import axiosClient, { BASE_URL } from "../../utils/axios-client";
+import axiosClient from "../../utils/axios-client";
 import { LoginStyled } from "./login.styled";
 
 export default function Login() {
