@@ -2,7 +2,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useState, useContext } from "react"
 import axiosClient from "../utils/axios-client";
-import { manipulateLocalStorage, } from "../utils/encrypt-storage";
+import { manipulateLocalStorage } from "../utils/encrypt-storage";
 import useAuthStorage from "../hooks/useAuthStorage";
 
 manipulateLocalStorage()
@@ -27,14 +27,16 @@ export const AuthProvider = ({ children }) => {
         _setUser(user)
     }
 
-    const setToken = (token) => {
-        token && localStorage.setEncryptedItem(ACCESS_TOKEN, token)
-        _setToken(token)
+    const setToken = (tokenNovo) => {
+        console.log({ ACCESS_TOKEN, tokenNovo })
+        tokenNovo && localStorage.setEncryptedItem(ACCESS_TOKEN, tokenNovo)
+        _setToken(tokenNovo)
     }
 
     const verifyLogin = async () => {
         try {
-            const { token } = await verifyUser()
+            const { token,user } = await refreshToken()
+            setUser(user)
             setToken(token)
             return true;
         } catch (error) {
@@ -51,18 +53,10 @@ export const AuthProvider = ({ children }) => {
         setToken(null)
     }
 
-    axiosClient.interceptors.request.use(async (config) => {
-        const token = localStorage.getDecryptedItem(ACCESS_TOKEN)
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`;
-        }
-        return config;
-    });
-
-    const verifyUser = async () => {
+    const refreshToken = async () => {
         try {
             const { data } = await axiosClient.get('/token/refresh')
-            if (!data) throw new Error("Erro ao recuperar usuário!"); 7
+            if (!data) throw new Error("Erro ao recuperar novo token!"); 7
             console.log({ data })
             return data;
         } catch (error) {
@@ -73,6 +67,15 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+     axiosClient.interceptors.request.use((config) => {
+        const accessToken = localStorage.getDecryptedItem(ACCESS_TOKEN)
+        console.log('auth:', accessToken,ACCESS_TOKEN)
+        if (accessToken) {
+            config.headers.Authorization = `Bearer ${accessToken}`;
+        }
+        return config;
+    });
+    
     return (
         <AuthContext.Provider value={{
             user,

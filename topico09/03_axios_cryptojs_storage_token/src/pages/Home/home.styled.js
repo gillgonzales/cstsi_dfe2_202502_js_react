@@ -12,12 +12,13 @@ export const HomeGridContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
   height: fit-content;
-  min-height: 20rem /* 320px */;
+  min-height: 2rem /* 320px */;
   column-gap: 2rem /* 32px */;
   row-gap: 1.25rem /* 20px */;
+
   @media (min-width: 640px) {
-    width: fit-content;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 

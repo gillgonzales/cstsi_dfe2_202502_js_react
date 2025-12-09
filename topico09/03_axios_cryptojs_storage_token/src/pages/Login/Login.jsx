@@ -1,11 +1,14 @@
-import {  useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthProvider";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import axiosClient from "../../utils/axios-client";
 import { LoginStyled } from "./login.styled";
 
 export default function Login() {
   const { setToken, setUser } = useAuthContext();
+  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
@@ -28,7 +31,10 @@ export default function Login() {
       setUser(data.user);
       navigate("/dashboard");
     } catch (error) {
-      console.error(error);
+      console.dir({ error });
+      console.error(error.response.data.message);
+      setIsError(true)
+      setErrorMessage(error.response.data.message)
     }
   };
 
@@ -40,9 +46,9 @@ export default function Login() {
           <input ref={emailRef} type="text" placeholder="Email" name="email" />
           <input ref={passwordRef} type="password" placeholder="Password" />
           <button className="btn btn-block">Login</button>
-          {/* <p>
-            Not Registered? <Link to="/signup">Create an account</Link>
-          </p> */}
+          <p>Não possui conta? <Link to="/signup">Crie sua conta!</Link></p>
+          {isError && <p style={{ color: 'red' }}>Erro ao logar!!!</p>}
+          {isError && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </form>
       </div>
     </LoginStyled>

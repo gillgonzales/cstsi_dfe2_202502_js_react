@@ -50,9 +50,6 @@ h1, h2, h3, h4, h5, h6, p {
     margin: 0;
 }
 
-h2 {
-    color: blue;
-  }
 
 body {
     font-family: 'Open Sans', sans-serif;
@@ -204,6 +201,10 @@ table > tbody > tr > td {
   :root, body {
     color:  rgba(255, 255, 255, 0.87);
     background-color:  #1a1a1a;
+    h2 {
+        color: var(--primary-color);
+        text-shadow: var(--primary-color) 0px 0px 5px ;
+    }
   }
 
 

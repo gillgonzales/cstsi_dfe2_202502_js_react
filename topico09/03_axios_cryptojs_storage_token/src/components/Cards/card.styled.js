@@ -33,6 +33,9 @@ export const CardMain = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: justify;
 
   h3 {
     margin-bottom: 0.75rem /* 12px */;
@@ -49,13 +52,15 @@ export const CardMain = styled.div`
   }
 
   p {
+    display: block;
+    width: 100%;
+    padding: 5px 10px;
     font-size: 3vw;
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis;
-    text-wrap: wrap;
-    text-align: center;
     color: #0c0c0c;
+    /* word-break: break-all; */
+    text-overflow: ellipsis;
   }
 
   @media (min-width: 640px) {
@@ -76,7 +81,7 @@ export const CardMain = styled.div`
   }
 `;
 
-export const CardImage = styled.img`
+export const CardImage = styled.div`
   display: flex;
   height: 350px;
   width: 100%;
@@ -91,7 +96,7 @@ export const CardImage = styled.img`
   }
 
   @media (min-width: 640px) {
-      img{ 
+      img{
         aspect-ratio: 1;
       }
   }
