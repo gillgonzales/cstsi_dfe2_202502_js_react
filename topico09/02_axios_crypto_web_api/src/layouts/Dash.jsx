@@ -9,25 +9,21 @@ import appLogo from "../assets/appLogo.svg";
 import logoutIcon from "../assets/logout.svg";
 
 export default function Dash() {
-  const { token, user, verifyLogin } = useAuthContext();
+  const { token, user, verifyLogin, logOut } = useAuthContext();
   const intervalLogin = useRef(null);
   console.log({ token, user });
   const navigate = useNavigate();
   
-  // useEffect(() => {
-  //   intervalLogin?.current && clearInterval(intervalLogin.current);
-  //   intervalLogin.current = setInterval(async ()=>{
-  //     console.log("Verificando login...");  
-  //      verifyLogin().then( isLogged => !isLogged && navigate("/login"));
-  //   },10000)
-  //   return () => {
-  //     clearInterval(intervalLogin.current);
-  //   }
-  // }, [token]);
-
-  const onLogout = () => {
-    navigate("/logout");
-  };
+  useEffect(() => {
+    intervalLogin?.current && clearInterval(intervalLogin.current);
+    intervalLogin.current = setInterval(async ()=>{
+      console.log("Verificando login...");  
+       verifyLogin().then( isLogged => !isLogged && navigate("/login"));
+    },5000)
+    return () => {
+      clearInterval(intervalLogin.current);
+    }
+  }, []);
 
   if (!token) return <Navigate to="/login" />;
 
@@ -41,7 +37,7 @@ export default function Dash() {
           </DefaultLogo>
           <div>Bem vindo, {user?.name} !</div>
           <LogoutIcon>
-            <a href="#" onClick={onLogout} >
+            <a href="#" onClick={()=>logOut()} >
                 <img src={logoutIcon}/>
             </a>
           </LogoutIcon>

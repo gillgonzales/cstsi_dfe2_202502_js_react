@@ -4,7 +4,7 @@ import { useAuthContext } from "../../contexts/AuthProvider";
 import { NavContainer, NavLinks, NavLogo } from "./navbar.styled";
 
 export const Navbar = () => {
-  const { user } = useAuthContext();
+  const { user, logOut } = useAuthContext();
 
   return (
     <NavContainer>
@@ -17,7 +17,7 @@ export const Navbar = () => {
         {user?.name ? (
           <>
             <Link to="/dashboard">Dashboard</Link>
-            <Link to="/logout">Logout</Link>
+            <Link to="#" onClick={()=>logOut()}>Logout</Link>
           </>
         ) : (
           <Link to="/login">Log in</Link>

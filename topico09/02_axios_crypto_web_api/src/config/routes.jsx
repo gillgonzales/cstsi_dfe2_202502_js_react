@@ -11,7 +11,6 @@ import Login from "../pages/Login/Login";
 import Cadastro from "../pages/Cadastro/Cadastro";
 // import Dashboard from "../pages/Dashboard/Dashboard";
 import Users from "../pages/Users/Users";
-import Logout from "../pages/Logout/Logout";
 import Produtos from "../pages/Dashboard/Produtos/Produtos";
 
 const router = createBrowserRouter(
@@ -26,7 +25,6 @@ const router = createBrowserRouter(
         <Route path="/dashboard" element={<Produtos/>} />
         <Route path="/users" element={<Users />} />
         <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/logout" element={<Logout />} />
       </Route>
     </>
   )

@@ -45,6 +45,7 @@ const AuthContext = createContext({
     token: null,
     setUser: () => { },
     setToken: () => { },
+    logOut: () => { },
     verifyLogin: () => { }
 })
 
@@ -65,17 +66,21 @@ export const AuthProvider = ({ children }) => {
                 localStorage.setItem(storage.ACCESS_TOKEN, arrayBufferToBase64(cryptedToken))
                 _setToken(cryptedToken)
             });
-        !token && clearAuthStorages();
+        if(!token) {
+            clearAuthStorages();
+            _setToken(null)
+        }
     }
 
     const interceptBearerToken = async (config) => {
             try {
-                if (!token)  return config
+                 const accessToken = base64ToArrayBuffer(localStorage.getItem(storage.ACCESS_TOKEN))
+                if (!accessToken)  return config
             //  debugger;
-                const decryptedToken = await decryptText(token);
-                console.log("decrypt:", { decryptedToken })
+                const decryptedToken = await decryptText(accessToken);
+                // console.log("decrypt:", { decryptedToken })
                 const plainTextToken = new TextDecoder().decode(decryptedToken)
-                console.log('token descriptografado:', plainTextToken)
+                // console.log('token descriptografado:', plainTextToken)
                 if (plainTextToken) 
                     config.headers.Authorization = `Bearer ${plainTextToken}`;
             } catch (error) {
@@ -86,20 +91,41 @@ export const AuthProvider = ({ children }) => {
 
     axiosClient.interceptors.request.use(interceptBearerToken);
 
+
+     const refreshToken = async () => {
+        try {
+            const { data } = await axiosClient.get('/token/refresh')
+            if (!data) throw new Error("Erro ao recuperar novo token!"); 7
+            console.log({ data })
+            return data;
+        } catch (error) {
+            const { response } = error;
+            response?.status === 401 && clearAuthStorages();
+            console.error('Error:', error);
+            throw error;
+        }
+    }
+
     const verifyLogin = async () => {
         try {
-            const user = await verifyUser()
-            setUser(user);
-            console.log("verify login", { user })
+            const {user,token} = await refreshToken()
+            setUser(user)
+            setToken(token)
+            console.log("verify login", { user,token })
             return true;
         } catch (error) {
             console.error(error)
             return false;
         }
     }
+    const logOut = ()=>{
+        console.log('logout')
+        setToken(null)
+        setUser(null)
+    }
 
     useEffect(() => {
-        token && verifyUser()
+        token && !user && verifyUser()
             .then(user => setUser(user))
             .catch(console.error)
     }, [token]);
@@ -110,6 +136,7 @@ export const AuthProvider = ({ children }) => {
             token,
             setUser,
             setToken,
+            logOut,
             verifyLogin,
         }}>
             {children}
