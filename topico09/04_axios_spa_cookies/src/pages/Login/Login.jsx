@@ -1,10 +1,15 @@
 import { Link, useNavigate } from "react-router";
 import { useAuthContext } from "../../contexts/AuthProvider";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { LoginStyled } from "./login.styled";
 
 export default function Login() {
   const { auth } = useAuthContext();
+
+
+    const [isError, setIsError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
@@ -21,6 +26,8 @@ export default function Login() {
       navigate("/dashboard");
     } catch (error) {
       console.error(error);
+       setIsError(true)
+      setErrorMessage(error.response.data.message)
     }
   };
 
@@ -32,9 +39,9 @@ export default function Login() {
           <input ref={emailRef} type="text" placeholder="Email" name="email" />
           <input ref={passwordRef} type="password" placeholder="Password" />
           <button className="btn btn-block">Login</button>
-          {/* <p>
-            Not Registered? <Link to="/signup">Create an account</Link>
-          </p> */}
+            <p>Não possui conta? <Link to="/signup">Crie sua conta!</Link></p>
+          {isError && <p style={{ color: 'red' }}>Erro ao logar!!!</p>}
+          {isError && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </form>
       </div>
     </LoginStyled>
